@@ -1,22 +1,19 @@
 var makeQueue = function(){
-  var someInstance = {};
-
   var queue = {};
+  queueMixin(queue);
   queue._storage = {};
   queue._front = 0;
   queue._back = 0;
-
-  queueMixin(queue);
   return queue;
 };
 
 var queueMixin = (function(){
+
   var queueMethods = {
     enqueue: function(value){
       this._storage[this._front] = value;
       this._front++;
     },
-
     dequeue: function(){
       if ( this._front - this._back ) {
         var result = this._storage[this._back];
@@ -37,5 +34,5 @@ var queueMixin = (function(){
     obj.size = queueMethods.size;
     return obj;
   };
-})();
 
+})();
