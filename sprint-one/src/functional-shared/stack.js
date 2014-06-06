@@ -7,7 +7,7 @@ var makeStack = function() {
 
 };
 
-// Immediately Invoked Function Express --> IIFE
+// Immediately Invoked Function Expression --> IIFE
 /*  Functional Shared
 */
 var stackMixin = (function(){
