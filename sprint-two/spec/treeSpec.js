@@ -41,4 +41,31 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should give child nodes references to their parents', function(){
+    tree.addChild(1);
+    expect(tree.children[0].parent === tree).to.equal(true);
+  });
+
+  it('should allow child to remove self from parent', function(){
+    tree.addChild(1);
+    tree.children[0].removeFromParent();
+    expect(tree.children.length).to.equal(0);
+  });
+
+  it('should run the callback on each item in the tree', function(){
+    var testTree = makeTree(0);
+    testTree.addChild(1);
+    testTree.addChild(2);
+    testTree.children[0].addChild(3);
+    testTree.children[0].addChild(4);
+    testTree.children[1].addChild(5);
+    testTree.children[1].addChild(6);
+    var arr = [];
+    var pushtoarr = function() {
+      arr.push(this.value);
+    };
+    testTree.traverse(pushtoarr);
+    var matchArray = [0,1, 3, 4, 2, 5, 6];
+    expect(arr).to.deep.equal(matchArray);
+  });
 });
