@@ -37,4 +37,22 @@ describe('binarySearchTree', function() {
     console.log(array);
     expect(array).to.eql([5,2,3]);
   });
+
+  it('should remove values at the correct location in the tree', function(){
+    bst = makeBinarySearchTree(10);
+    bst.insert(5);
+    bst.insert(2);
+    bst.insert(7);
+    bst.insert(15);
+    bst.insert(13);
+    bst.insert(17);
+    expect(bst.right.value).to.equal(15);
+    expect(bst.right.right.value).to.equal(17);
+    expect(bst.right.left.value).to.equal(13);
+
+
+
+
+  });
+
 });
