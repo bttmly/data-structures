@@ -22,32 +22,7 @@ var bstMethods = {
         this.right = newBst;
       }
     }
-
   },
-
-  // contains: function(value, result){
-  //   if ( result === undefined ){
-  //     result = false;
-  //   }
-  //   if ( value === this.value ) {
-  //     result = true;
-  //   } else {
-  //     if ( value > this.value ) {
-  //       if ( !this.right ) {
-  //         result = false;
-  //       } else {
-  //         result = this.right.contains( value, result );
-  //       }
-  //     } else {
-  //       if ( !this.left ) {
-  //         result = false;
-  //       } else {
-  //         result = this.left.contains( value, result );
-  //       }
-  //     }
-  //   }
-  //   return result;
-  // },
 
   contains: function(value){
     if ( this.value === value ) { return true; }
@@ -77,13 +52,7 @@ var bstMethods = {
   },
 
   remove: function( value ) {
-
     var match;
-
-    // if ( this.value === value ) {
-    //   return;
-    // }
-
     if ( value > this.value ) {
       if ( this.right ) {
         if ( this.right.value === value ) {
