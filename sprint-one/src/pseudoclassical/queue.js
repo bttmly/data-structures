@@ -1,3 +1,5 @@
+/* Pseudoclassical */
+
 var Queue = function() {
   this._storage = {};
   this._front = 0;
