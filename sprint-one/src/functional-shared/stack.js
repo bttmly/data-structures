@@ -1,16 +1,15 @@
 var makeStack = function() {
-
   var stack = {};
   stack._storage = {};
   stack._size = 0;
-
   stackMixin( stack );
-
   return stack;
 
 };
 
 // Immediately Invoked Function Express --> IIFE
+/*  Functional Shared
+*/
 var stackMixin = (function(){
 
   var stackMethods = {

@@ -1,8 +1,7 @@
+/* A functional implementation is really simple - it uses nested functions to act as a class and makes advantage of a close to keep it's variables alive. */
+
 var makeStack = function(){
-
   var someInstance = {};
-
-  // Use an object with numeric keys to store values
   var storage = {};
   var size = 0;
 
@@ -27,3 +26,4 @@ var makeStack = function(){
 
   return someInstance;
 };
+
