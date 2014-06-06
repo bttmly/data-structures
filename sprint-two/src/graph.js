@@ -35,8 +35,6 @@ Graph.prototype.removeNode = function(value){
 
 Graph.prototype.getEdge = function(fromNode, toNode){
   var start = this.getNode( fromNode );
-  console.log( fromNode );
-  console.log( start );
   for ( var i = 0; i < start.edges.length; i++ ) {
     if ( start.edges[i].value === toNode ) {
       return true;
