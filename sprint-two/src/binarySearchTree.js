@@ -25,28 +25,45 @@ var bstMethods = {
 
   },
 
-  contains: function(value, result){
-    if ( result === undefined ){
-      result = false;
-    }
-    if ( value === this.value ) {
-      result = true;
-    } else {
-      if ( value > this.value ) {
-        if ( !this.right ) {
-          result = false;
-        } else {
-          result = this.right.contains( value, result );
-        }
+  // contains: function(value, result){
+  //   if ( result === undefined ){
+  //     result = false;
+  //   }
+  //   if ( value === this.value ) {
+  //     result = true;
+  //   } else {
+  //     if ( value > this.value ) {
+  //       if ( !this.right ) {
+  //         result = false;
+  //       } else {
+  //         result = this.right.contains( value, result );
+  //       }
+  //     } else {
+  //       if ( !this.left ) {
+  //         result = false;
+  //       } else {
+  //         result = this.left.contains( value, result );
+  //       }
+  //     }
+  //   }
+  //   return result;
+  // },
+
+  contains: function(value){
+    if ( this.value === value ) { return true; }
+    if ( value > this.value ) {
+      if ( !this.right ) {
+        return false;
       } else {
-        if ( !this.left ) {
-          result = false;
-        } else {
-          result = this.left.contains( value, result );
-        }
+        return this.right.contains( value );
+      }
+    } else {
+      if ( !this.left ) {
+        return false;
+      } else {
+        return this.left.contains( value );
       }
     }
-    return result;
   },
 
   depthFirstLog: function( fn ){
