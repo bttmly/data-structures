@@ -6,6 +6,26 @@ var makeBinarySearchTree = function(value){
   return bst;
 };
 
+makeBinarySearchTree.isValidBst = function(bst){
+  if ( bst.left ) {
+    if ( bst.left.value < bst.value ) {
+      return makeBinarySearchTree.isValidBst( bst.left );
+    } else {
+      return false;
+    }
+  }
+  if ( bst.right ) {
+    if ( bst.right.value > bst.value ) {
+      return makeBinarySearchTree.isValidBst( bst.right );
+    } else {
+      return false;
+    }
+  }
+  if ( !bst.left && !bst.right ) {
+    return true;
+  }
+};
+
 var bstMethods = {
   insert: function(value){
     var newBst = makeBinarySearchTree(value);
@@ -79,15 +99,22 @@ var bstMethods = {
       }
     }
   },
-  depth : function() {
+  checkDepth : function(){
+    var max = this.depth( Math.max );
+    var min = this.depth( Math.min );
+    if ( max > min * 2 ) {
+      // rebalance!!!
+    }
+  },
+  depth : function(func) {
     if (this.left === null && this.right === null) {
       return 1;
     } else if (this.left === null) {
-      return 1 + this.right.depth();
+      return 1 + this.right.depth(func);
     } else if (this.right === null) {
-      return 1 + this.left.depth();
+      return 1 + this.left.depth(func);
     }
-    return 1 + Math.max(this.left.depth(), this.right.depth());
+    return 1 + func.call(null, this.left.depth(func), this.right.depth(func));
   }
 };
 
