@@ -4,10 +4,9 @@ describe('selfBalancingBST', function() {
   it('should return the depth of the tree', function(){
     bst = makeSelfBalancingBST(40);
     bst.insert(20);
-    bst.insert(50);
-    bst.insert(60);
-    expect(bst.depth(Math.max)).to.equal(4);
-    expect(bst.depth(Math.min)).to.equal(4);
+    bst.insert(10);
+    expect(bst.depth(Math.max)).to.equal(2);
+    expect(bst.depth(Math.min)).to.equal(2);
   });
 
   it('should get values', function(){
