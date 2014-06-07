@@ -1,43 +1,104 @@
-var makeDoublyLinkedList = function(){
+var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
 
   list.addToTail = function(value){
-    var node = makeNode( value );
+    var newTail = makeNode( value );
     if ( this.tail ) {
-      var oldTail = this.tail;
-      oldTail.next = node;
+      var oldTail = list.tail;
+      oldTail.next = newTail;
+      newTail.previous = oldTail;
     }
+    this.tail = newTail;
     if ( !this.head ) {
-      this.head = node;
+      this.head = newTail;
     }
-    this.tail = node;
+    return newTail;
   };
 
   list.addToHead = function(value){
+    var newHead = makeNode( value );
+    if ( this.head ) {
+      var oldHead = list.head;
+      oldHead.previous = newHead;
+      newHead.next = oldHead;
+    }
+    this.head = newHead;
+    if ( !this.tail ) {
+      this.tail = newHead;
+    }
+    return newHead;
+  };
 
+  list.insertAfter = function( value, node ){
+    if ( this.containsNode( node ) ) {
+      newNode = makeNode( value );
+      newNode.previous = node;
+      newNode.next = node.next;
+      node.next = newNode;
+      return newNode;
+    } else { return false; }
+  };
+
+  list.insertBefore = function( value, node ){
+    if ( this.containsNode( node ) ) {
+      newNode = makeNode( value );
+      newNode.next = node;
+      newNode.previous = node.previous;
+      node.previous = newNode;
+      return newNode;
+    } else { return false; }
   };
 
   list.removeHead = function(){
-    var oldHead = this.head;
-    this.head = oldHead.next;
-    return oldHead.value;
+    if ( !this.head ) return false;
+    var result = this.head;
+    this.head = result.next;
+    result.next = null;
+    return result.value;
   };
 
   list.removeTail = function(){
+    if ( !this.tail ) return false;
+    var result = this.tail;
+    this.tail = result.previous;
+    result.previous = null;
+    return result.value;
+  }
 
+  list.containsNode = function( node ){
+    cNode = this.head;
+    while ( cNode ) {
+      if ( cNode === node ) {
+        return true;
+      }
+      cNode = cNode.next;
+    }
+    return false;
   };
 
   list.contains = function(target){
-    var currentNode = this.head;
+    if ( !this.head ) return false;
+    var node = this.head;
     do {
-      if ( currentNode.value === target ) {
-        return true;
+      if ( node.value === target ) {
+        return true
       }
-    } while ( currentNode = currentNode.next );
+    } while ( node = node.next )
     return false;
   };
+
+  list.getAtIndex = function( index ){
+    var i = 0;
+    var node = this.head;
+    while ( i < index ) {
+      node = node.next;
+      i++;
+    }
+    return node;
+  }
+
   return list;
 };
 
