@@ -1,4 +1,4 @@
-describe('linkedList', function() {
+describe('recursiveLinkedList', function() {
   var linkedList;
 
   // beforeEach(function() {
