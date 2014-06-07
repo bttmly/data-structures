@@ -33,7 +33,7 @@ var makeDoublyLinkedList = function(){
 
   list.insertAfter = function( value, node ){
     if ( this.containsNode( node ) ) {
-      newNode = makeNode( value );
+      var newNode = makeNode( value );
       newNode.previous = node;
       newNode.next = node.next;
       node.next = newNode;
@@ -43,7 +43,7 @@ var makeDoublyLinkedList = function(){
 
   list.insertBefore = function( value, node ){
     if ( this.containsNode( node ) ) {
-      newNode = makeNode( value );
+      var newNode = makeNode( value );
       newNode.next = node;
       newNode.previous = node.previous;
       node.previous = newNode;
@@ -68,7 +68,7 @@ var makeDoublyLinkedList = function(){
   }
 
   list.containsNode = function( node ){
-    cNode = this.head;
+    var cNode = this.head;
     while ( cNode ) {
       if ( cNode === node ) {
         return true;
