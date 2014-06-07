@@ -62,4 +62,27 @@ describe('binarySearchTree', function() {
     console.log(bst);
     expect(bst.depth(Math.max)).to.equal(5);
   });
+
+  it('should get values', function(){
+    bst = makeBinarySearchTree(2);
+    bst.insert(1);
+    bst.insert(3);
+    console.log(bst.getValues());
+  });
+
+  it('should rebalance to a valid tree', function(){
+    bst = makeBinarySearchTree(10);
+    bst.insert(20);
+    bst.insert(30);
+    bst.insert(40);
+    bst.insert(50);
+    bst.insert(60);
+    bst.insert(70);
+    bst.insert(80);
+    bst.insert(90);
+    bst.rebalance();
+    expect(bst.value).to.equal(50);
+    expect(makeBinarySearchTree.isValidBst(bst)).to.equal(true);
+  });
+
 });
