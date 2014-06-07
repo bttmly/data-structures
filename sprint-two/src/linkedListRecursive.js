@@ -13,15 +13,15 @@ var makeRecursiveLL = function(value){
 
   list.tail = function(value){
     if ( this.next ) {
-      return this.next.tail()
+      return this.next.tail();
     } else {
       return this;
     }
-  }
+  };
 
   list.head = function(){
     return this;
-  }
+  };
 
   list.removeHead = function(){
     if ( this.next ) {
