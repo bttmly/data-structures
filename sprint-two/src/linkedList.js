@@ -4,7 +4,7 @@ var makeLinkedList = function(){
   list.tail = null;
 
   list.addToTail = function(value){
-    var node = makeNode( value );
+    var node = new Node2( value );
     if ( this.tail ) {
       var oldTail = this.tail;
       oldTail.next = node;
@@ -34,11 +34,9 @@ var makeLinkedList = function(){
   return list;
 };
 
-var makeNode = function(value){
-  var node = {};
-  node.value = value;
-  node.next = null;
-  return node;
+var Node2 = function(value){
+  this.value = value;
+  this.next = null;
 };
 
 /*

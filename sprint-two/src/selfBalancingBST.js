@@ -46,6 +46,7 @@ var selfBSTmethods = {
       this.rebalance();
     }
   },
+
   contains: function(value){
     if (this.value === value) { return true; }
     if (value > this.value) {
@@ -62,6 +63,7 @@ var selfBSTmethods = {
       }
     }
   },
+
   depthFirstLog: function(fn){
     fn.call(null, this.value);
     if (this.left) {
@@ -71,6 +73,7 @@ var selfBSTmethods = {
       this.right.depthFirstLog(fn);
     }
   },
+
   getValues: function(){
     var results = [];
     var pushVal = function(v){
@@ -79,6 +82,7 @@ var selfBSTmethods = {
     this.depthFirstLog(pushVal);
     return results;
   },
+
   remove: function(value) {
     var match;
     if (value > this.value) {
@@ -107,11 +111,13 @@ var selfBSTmethods = {
       }
     }
   },
+
   isBalanced: function(){
     var max = this.depth(Math.max);
     var min = this.depth(Math.min);
     return max <= min * 2;
   },
+
   depth : function(func) {
     if (this.left === null && this.right === null) {
       return 1;
@@ -122,13 +128,12 @@ var selfBSTmethods = {
     }
     return 1 + func.call(null, this.left.depth(func), this.right.depth(func));
   },
-  // how do we make sure this doesn't get called recursively?
+
   rebalance : function() {
     var values = this.getValues();
     var median = values.sort()[Math.floor(values.length / 2)];
     var medianIndex = values.indexOf(median);
     values.splice(medianIndex, 1);
-
     this.value = median;
     this.left = null;
     this.right = null;
