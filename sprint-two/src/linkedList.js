@@ -30,6 +30,7 @@ var makeLinkedList = function(){
     } while ( currentNode = currentNode.next );
     return false;
   };
+
   return list;
 };
 

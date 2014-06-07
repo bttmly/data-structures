@@ -15,10 +15,18 @@ var makeDoublyLinkedList = function(){
     this.tail = node;
   };
 
+  list.addToHead = function(value){
+
+  };
+
   list.removeHead = function(){
     var oldHead = this.head;
     this.head = oldHead.next;
     return oldHead.value;
+  };
+
+  list.removeTail = function(){
+
   };
 
   list.contains = function(target){
