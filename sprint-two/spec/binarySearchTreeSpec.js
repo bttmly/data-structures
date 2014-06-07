@@ -48,10 +48,18 @@ describe('binarySearchTree', function() {
     expect(bst.right.value).to.equal(15);
     expect(bst.right.right.value).to.equal(17);
     expect(bst.right.left.value).to.equal(13);
-
-
-
-
   });
 
+  it('should return the depth of the tree', function(){
+    bst = makeBinarySearchTree(10);
+    bst.insert(5);
+    bst.insert(4);
+    bst.insert(2);
+    bst.insert(1);
+    bst.insert(15);
+    bst.insert(13);
+    bst.insert(17);
+    console.log(bst);
+    expect(bst.depth()).to.equal(5);
+  });
 });
