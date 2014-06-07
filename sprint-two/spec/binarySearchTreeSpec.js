@@ -60,6 +60,6 @@ describe('binarySearchTree', function() {
     bst.insert(13);
     bst.insert(17);
     console.log(bst);
-    expect(bst.depth()).to.equal(5);
+    expect(bst.depth(Math.max)).to.equal(5);
   });
 });

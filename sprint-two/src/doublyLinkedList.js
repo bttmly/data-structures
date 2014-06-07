@@ -1,4 +1,4 @@
-var makeLinkedList = function(){
+var makeDoublyLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
