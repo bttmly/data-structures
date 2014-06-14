@@ -52,7 +52,7 @@ var bstMethods = {
     if (!prev){
       var prev = [this];
       fn(this.value);
-x    }
+    }
     var level = [];
     for (var i = 0; i < prev.length; i++){
       if (prev[i].left) {
