@@ -48,6 +48,26 @@ var bstMethods = {
       this.right.depthFirstLog(fn);
     }
   },
+  breadthFirstLog: function(fn, prev){
+    if (!prev){
+      var prev = [this];
+      fn(this.value);
+x    }
+    var level = [];
+    for (var i = 0; i < prev.length; i++){
+      if (prev[i].left) {
+        fn(prev[i].left.value);
+        level.push(prev[i].left);
+      }
+      if (prev[i].right) {
+        fn(prev[i].right.value);
+        level.push(prev[i].right);
+      }
+    }
+    if ( level.length ) {
+      this.breadthFirstLog(fn, level);
+    }
+  },
   remove: function(value) {
     var match;
     if (value > this.value) {
